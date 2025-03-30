@@ -1,21 +1,37 @@
 <body>
 
 <h1>The Form</h1>
-
-<%= form_tag("/users", method:"post") do %>
-  <%= label_tag(:username, "user name:")%>
-  <%= text_field_tag(:username)%>
-<br><br>
-  <%= label_tag(:email, "email:")%>
-  <%= text_field_tag(:email)%>
-<br><br>
-  <%= label_tag(:password, "password:")%>
-  <%= password_field_tag(:password)%>
-<br><br>
-  <%= submit_tag("submit")%>
+<!--form_with version-->
+<%= form_with model: @user do |form| %>
+<br>
+    <%= form.label :username %>
+    <%= form.text_field :username, placeholder: "enter username" %>
+<br>
+    <%= form.label :email %>
+    <%= form.text_field :email, placeholder: "you@domain.com"%>
+<br>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+<br>
+<%= form.submit %>
 <% end %>
-<%# <form action="/users" method="post" accept-charset="UTF-8" data-turbo=false>
 
+<!--form tag version-->
+<%# <%= form_tag("/users", method:"post") do %> 
+  <%# <%= label_tag(:username, "user name:")%> 
+  <%# <%= text_field_tag(:username)%> 
+<%# <br><br> %>
+  <%# <%= label_tag(:email, "email:")%> 
+  <%# <%= text_field_tag(:email)%> 
+<%# <br><br> %>
+  <%# <%= label_tag(:password, "password:")%> 
+  <%# <%= password_field_tag(:password)%> 
+<%# <br><br> %>
+  <%# <%= submit_tag("submit")%> 
+<%# <% end %> 
+
+<!--brute force html version-->
+<%# <form action="/users" method="post" accept-charset="UTF-8" data-turbo=false>
 
   <label for="username">First name:</label>
   <input type="text" id="username" name="user[username]"><br><br>
